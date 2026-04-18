@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+
+$color-header-footer: #000020;
+$color-white: #ffffff;
+$color-blue: #7c7cee;
+$color-body: #131313;
+$color-letra-main: #a8a5a5;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url(img/pasillo.jpg); 
+    /* Centrar y no repetir la imagen */
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Ajustar la imagen para cubrir todo el fondo */
+    background-size: cover;
+    /* Fija la imagen para que no se mueva con el scroll */
+    background-attachment: fixed;
+    /* Altura mínima para asegurar que cubra toda la pantalla */
+    min-height: 100vh;
+    margin: 0;
+    color: $color-white;
+
+  .general_container{
+
+        header{
+            background-color: $color-header-footer;
+            width: 100%;               
+            min-height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .container_header{
+            margin-top: 30px;
+            gap: 100px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            flex-direction: row;
+            padding: 0;
+            justify-content: center;
+
+                
+                h1{
+                    color: $color-white;
+                    font-style: italic;
+                    
+                }
+                ul{
+                    list-style: none;
+                    display: flex;
+                    gap: 30px;
+                    a{
+                        color: $color-white;
+                        text-decoration: none;
+                        font-style: italic;
+                    
+                    }
+                }
+            }
+        }
+
+        main{
+            color: $color-letra-main;
+            width: 90%;           /* Ocupa el 90% del ancho de la pantalla */
+            max-width: 1200px;    /* No crecerá más de esto en pantallas grandes */
+            margin: 0 auto;       /* El truco clave: centra la caja horizontalmente */
+            overflow: hidden;     /* Evita que el contenido interno se desborde */
+            padding: 20px;        /* Espacio interno para que el texto no toque los bordes de la caja */
+            
+            .hero_container{
+                
+                
+            }
+
+
+        }
+        footer{
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $color-header-footer;
+            width: 100%;              
+            margin-top: auto;
+
+            .container_footer {
+                margin-top: auto;
+                gap: 100px;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                flex-direction: row;
+                padding: 0;
+                justify-content: center;
+                margin: 40px;
+                
+
+                .footer-brand{
+                    img {
+                        color: $color-white;
+                    }
+
+                    samp {
+                        color: $color-white;
+                    }
+
+                }
+
+                .footer{
+                    ul {
+                        display: flex;
+                        gap: 40px;
+                        list-style: none;
+                        a{
+                            color: $color-white;
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+    }
+
+}
+
+a:hover{
+    font-size: 20px;
+}
+
+
+/*background-color: rgba(255, 255, 255, 0.8); 
+    
+    /* Añade espacio interno para que el texto respire */
+   /* padding: 30px;*/
+    
+    /* Separa una sección de otra */
+   /* margin-bottom: 20px;*/
+    
+    /* Bordes redondeados para un look más moderno */
+   /* border-radius: 10px;*/
+    
+    /* Opcional: una sombra suave para dar profundidad */
+    /*box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);*/
