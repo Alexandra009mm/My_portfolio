@@ -38,7 +38,7 @@ body .general_container header {
 }
 body .general_container header .container_header {
   margin-top: 30px;
-  gap: 100px;
+  gap: 60px;
   display: flex;
   align-items: center;
   width: 100%;
@@ -54,6 +54,12 @@ body .general_container header .container_header ul {
   list-style: none;
   display: flex;
   gap: 30px;
+}
+body .general_container header .container_header ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 body main {
   color: #ffffff;

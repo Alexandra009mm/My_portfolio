@@ -64,7 +64,7 @@ body {
 
             .container_header{
             margin-top: 30px;
-            gap: 100px;
+            gap: 60px;
             display: flex;
             align-items: center;
             width: 100%;
@@ -80,6 +80,13 @@ body {
                     list-style: none;
                     display: flex;
                     gap: 30px;
+
+                    li{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                    }
 
                     }
                 }
