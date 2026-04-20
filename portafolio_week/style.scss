@@ -136,6 +136,7 @@ body {
                     li.proyects {
                         @include tarjeta-estilo;
                         a{
+                            background-color: $color-fondo-transparente-principal;
                             font-style: italic;
                         }
 

@@ -135,7 +135,7 @@ body main div.general_container section.galeria h2 {
   box-shadow: 0 4px 15px rgba(215, 196, 121, 0.932);
   border: 2px solid #ffffff;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  background-color: #C19A6B;
+  background-color: #DDBB99;
 }
 body main div.general_container section.galeria figure.pets_container {
   display: grid;
@@ -154,6 +154,7 @@ body main div.general_container a#return {
   color: #C19A6B;
 }
 body footer {
+  background-color: #DDBB99;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,14 +165,25 @@ body footer div.footer_container {
   flex-wrap: nowrap;
   gap: 20px;
   margin: 50px;
+  color: white;
 }
 body footer div.footer_container div.social_networks {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
 }
 body footer div.footer_container div.social_networks ul.redes li.link-redes {
   text-align: justify;
+}
+body footer div.footer_container div.social_networks ul.redes li.link-redes a {
+  color: white;
+}
+body footer div.footer_container div.legal a {
+  color: #ffffff;
+}
+body footer p {
+  color: white;
 }
 
 li {

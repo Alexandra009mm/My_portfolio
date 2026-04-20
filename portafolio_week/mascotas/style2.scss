@@ -135,7 +135,7 @@ body{
           color: $color-white;
           font-style: italic;
           @include tarjeta-estilo;
-          background-color: $color-letra-bordes;
+          background-color: $color-header-footer;
 
         }
         figure.pets_container{
@@ -155,6 +155,7 @@ body{
     }
   }
   footer{
+    background-color: $color-header-footer;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -164,20 +165,32 @@ body{
       flex-wrap: nowrap;
       gap: 20px;
       margin: 50px;
+      color: white;
       div.social_networks{
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: white;
         ul.redes{
           li.link-redes{
             text-align: justify;
+            a {
+              color: white;
+            }
 
           }
         }
       }
+     div.legal{
+      a{
+        color: #ffffff;
+      }
+     }
       
     }
-
+    p {
+    color: white;
+    }
   }
 }
 
