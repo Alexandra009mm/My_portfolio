@@ -201,3 +201,329 @@ a{
   text-decoration: none;
   color: $color-cards;
 }
+
+
+/*info html*/
+
+main{
+  section.general_container{
+    width: 90%;           
+    max-width: 1200px;    
+    margin: 0 auto;       
+    overflow: hidden;     
+    padding: 20px;     
+    section.donations{
+      @include tarjeta-estilo();
+      border: 1px solid $color-destalles;
+      h2{
+        color: $color-destalles;
+        font-style: italic;
+      }
+    }
+    aside.adoption_process{
+      h2{
+        color: $color-destalles;
+        font-style: italic;
+      }
+      ul{
+        display: flex;
+        gap: 30px;
+        li{
+          @include tarjeta-estilo();
+          border: 1px solid $color-destalles;
+        
+        }
+      }
+      .video-container{
+        position: relative;
+        width: 70%;
+        max-width: 800px;
+        margin: auto;
+        background-color: $color-cards;
+        padding: 4px 4px;
+        border-radius: 20px;
+
+        video{
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+        }
+        .custom-play-button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .custom-play-button img{
+            width: 50px;
+            height: 60px;
+        }
+      }
+    }
+    section.volunteering{
+      @include tarjeta-estilo();
+      border: 1px solid $color-destalles;
+      
+      h2{
+        color: $color-destalles;
+        font-style: italic;
+      }
+      ul.volunteers_list{
+        display: flex;
+        gap: 30px;
+
+        li{
+          @include tarjeta-estilo();
+          border: 1px solid $color-destalles;
+
+        }
+      }
+    }
+  }
+}
+/**/
+/*estilos contact*/
+main{
+
+  section.general_container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    h2{
+      @include tarjeta-estilo;
+      text-align: center;
+      background-color: $color-letra-bordes;
+      color: $color-white;
+      font-style: italic;
+    }
+
+    section.ubicacion{
+      @include box();
+
+      h2{
+        background-color: $color-header-footer;
+      }
+
+      .contenedor-ubicacion{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+        margin-top: 20px;
+
+        .mapa{
+          iframe{
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 15px;
+          }
+        }
+
+        .info-ubicacion{
+          @include tarjeta-estilo;
+          background-color: $color-white;
+          border: 1px solid $color-destalles;
+
+          h3{
+            margin-top: 15px;
+            color: $color-letra-bordes;
+          }
+
+          p{
+            margin-top: 10px;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// =====================
+// TABLETS
+// =====================
+@media (max-width: 992px){
+
+  body{
+
+    header{
+      nav{
+        ul.nav-list{
+          gap: 30px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    }
+
+    main{
+
+      div.general_container{
+        width: 95%;
+      }
+
+      section.galeria{
+        figure.pets_container{
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: auto;
+          gap: 15px;
+        }
+      }
+
+      section.general_container{
+        aside.adoption_process{
+          ul{
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+
+        section.volunteering{
+          ul.volunteers_list{
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    footer{
+      div.footer_container{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  }
+}
+
+
+// =====================
+// MOBILE
+// =====================
+@media (max-width: 768px){
+
+  body{
+
+    header{
+      min-height: auto;
+      padding: 15px;
+
+      h1{
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      nav{
+        ul.nav-list{
+          flex-direction: column;
+          gap: 15px;
+        }
+      }
+    }
+
+    main{
+
+      section.hero_container{
+        min-height: 70vh;
+        padding: 20px;
+
+        div.hero{
+          padding: 20px;
+        }
+      }
+
+      div.general_container{
+        width: 100%;
+        padding: 10px;
+      }
+
+      section.galeria{
+        figure.pets_container{
+          grid-template-columns: 1fr;
+        }
+      }
+
+      section.general_container{
+
+        aside.adoption_process{
+          ul{
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .video-container{
+            width: 100%;
+          }
+        }
+
+        section.volunteering{
+          ul.volunteers_list{
+            flex-direction: column;
+            gap: 15px;
+          }
+        }
+      }
+    }
+
+    footer{
+      div.footer_container{
+        margin: 20px;
+        gap: 15px;
+      }
+    }
+  }
+}
+
+
+// =====================
+// SMALL MOBILE
+// =====================
+@media (max-width: 480px){
+
+  body{
+
+    header{
+      h1{
+        font-size: 1.2rem;
+      }
+    }
+
+    main{
+
+      section.hero_container{
+        div.hero{
+          padding: 15px;
+        }
+      }
+
+      section.container_description,
+      section.benefits,
+      section.galeria,
+      section.donations,
+      section.volunteering{
+        padding: 15px;
+      }
+
+      .custom-play-button img{
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    footer{
+      p{
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+  }
+}
