@@ -1,0 +1,530 @@
+// ─── VARIABLES ───────────────────────────────
+ 
+$color-header-footer:           #0e1027;
+$color-white:                   #ffffff;
+$color-blue:                    #7c7cee;
+$color-body:                    #131313;
+$color-letra-main:              #a8a5a5;
+$color-fondo-transparente-principal: rgba(38, 33, 33, 0.548);
+$color-fondo-transparente-h:    rgba(0, 0, 0, 0.395);
+ 
+$shadow-dark: 0 4px 15px rgba(0, 0, 0, 0.932);
+
+// ─── BREAKPOINTS ─────────────────────────────
+$bp-sm: 480px;
+$bp-md: 768px;
+ 
+ 
+// ─── MIXINS ──────────────────────────────────
+ 
+@mixin tarjeta-estilo {
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: $shadow-dark;
+}
+ 
+@mixin boton {
+    font-style: italic;
+    background-color: rgb(11, 13, 12);
+    padding: 10px 16px;
+    border: 1px solid $color-blue;
+    border-radius: 10px;
+    color: $color-blue;
+    cursor: pointer;
+    transition: font-size 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+ 
+@mixin section-heading {
+    font-style: italic;
+    background-color: $color-fondo-transparente-h;
+    @include tarjeta-estilo;
+}
+ 
+@mixin flex-center($dir: row) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $dir;
+}
+ 
+ 
+// ─── RESET ───────────────────────────────────
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+li {
+    list-style: none;
+}
+ 
+a {
+    text-decoration: none;
+    color: $color-letra-main;
+ 
+    &:hover {
+        font-size: 19px;
+        transition: font-size 0.2s ease, color 0.2s ease;
+        color: $color-blue;
+    }
+}
+ 
+button:hover {
+    font-size: 19px;
+    transition: 0.2s;
+}
+ 
+ 
+// ─── BODY & LAYOUT WRAPPER ───────────────────
+ 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url(img/pasillo.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    color: $color-white;
+ 
+    .general_container {
+        @include flex-center(column);
+        min-height: 100vh;
+ 
+ 
+        // ─── HEADER ───────────────────────────────
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: $shadow-dark;
+            background-color: $color-header-footer;
+            width: 100%;
+            min-height: 100px;
+            @include flex-center(row);
+ 
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: $color-blue;
+                opacity: 0.5;
+            }
+ 
+            .container_header {
+                margin-top: 30px;
+                gap: 60px;
+                @include flex-center(row);
+                width: 100%;
+                padding: 0;
+
+                h2 {
+                    font-style: italic;
+                }
+
+                button {
+                    &#button_menu {
+                        display: none;
+                    }
+                }
+
+                nav {
+                    ul {
+                        display: flex;
+                        gap: 30px;
+                    }
+    
+                    li {
+                        @include flex-center(column);
+                    }
+                }
+
+                // ── Responsive: header en columna en móvil ──
+                @media (max-width: $bp-md) {
+                    flex-direction: column;
+                    gap: 20px;
+                    margin-top: 16px;
+                    padding: 10px 16px;
+
+                    button {
+                        &#button_menu {
+                            display: block;
+                        }
+                    }
+
+                    nav {
+                        width: 100%;
+
+                        ul {
+                            flex-direction: column;
+                            align-items: center;
+                            gap: 12px;
+                        }
+
+                        &.hidden {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }// /header
+ 
+ 
+        // ─── MAIN ─────────────────────────────────
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 20px;
+ 
+ 
+            // ── Hero ──────────────────────────────
+            .hero_container {
+                text-align: center;
+                margin-top: 100px;
+                @include tarjeta-estilo;
+ 
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 10%;
+                    height: 80%;
+                    width: 4px;
+                    background-color: $color-blue;
+                    border-radius: 4px;
+                    opacity: 0.7;
+                }
+ 
+                h1 {
+                    font-style: oblique;
+                }
+ 
+                p {
+                    margin: 30px;
+                }
+ 
+                a {
+                    @include boton;
+ 
+                    &:hover {
+                        background-color: $color-blue;
+                        color: $color-white;
+                        font-size: inherit;
+                    }
+                }
+            }
+ 
+ 
+            // ── Projects ──────────────────────────
+            #proyect {
+                margin-top: 100px;
+                @include flex-center(column);
+                gap: 20px;
+ 
+                h2 {
+                    @include section-heading;
+                }
+ 
+                ul {
+                    display: flex;
+                    gap: 40px;
+
+                    // ── Responsive: proyectos en columna en móvil ──
+                    @media (max-width: $bp-md) {
+                        flex-direction: column;
+                        gap: 20px;
+                        width: 100%;
+                    }
+ 
+                    li.proyects {
+                        @include tarjeta-estilo;
+ 
+                        &:hover {
+                            transform: translateY(-4px);
+                            transition: transform 0.25s ease, box-shadow 0.25s ease;
+                            box-shadow: 0 8px 25px rgba(124, 124, 238, 0.3);
+                        }
+ 
+                        strong {
+                            @include flex-center(row);
+ 
+                            a {
+                                text-align: center;
+                                @include tarjeta-estilo;
+                            }
+                        }
+                    }
+                }
+            }
+ 
+ 
+            // ── Gallery ───────────────────────────
+            #gallery {
+                margin-top: 100px;
+                @include flex-center(column);
+                gap: 30px;
+ 
+                h2 {
+                    @include section-heading;
+                }
+ 
+                // Filter buttons row
+                .gallery_filters {
+                    display: flex;
+                    gap: 14px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    // ── Responsive: filtros en columna en móvil ──
+                    @media (max-width: $bp-sm) {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+ 
+                    .filter_btn {
+                        @include boton;
+ 
+                        &.active,
+                        &:hover {
+                            background-color: $color-blue;
+                            color: $color-white;
+                        }
+                    }
+                }
+ 
+                // Responsive grid de imágenes — ya maneja su propio responsive con auto-fill
+                .gallery_grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                    gap: 24px;
+                    width: 100%;
+
+                    // ── Responsive: 1 columna en móvil ──
+                    @media (max-width: $bp-sm) {
+                        grid-template-columns: 1fr;
+                    }
+ 
+                    .gallery_item {
+                        position: relative;
+                        border-radius: 10px;
+                        overflow: hidden;
+                        box-shadow: $shadow-dark;
+                        cursor: pointer;
+ 
+                        img {
+                            width: 100%;
+                            height: 200px;
+                            object-fit: cover;
+                            display: block;
+                            transition: transform 0.35s ease;
+                        }
+ 
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            inset: 0;
+                            background: linear-gradient(
+                                to top,
+                                rgba(14, 16, 39, 0.85) 0%,
+                                transparent 60%
+                            );
+                            opacity: 0;
+                            transition: opacity 0.3s ease;
+                        }
+ 
+                        .gallery_overlay {
+                            position: absolute;
+                            bottom: 14px;
+                            left: 0;
+                            width: 100%;
+                            text-align: center;
+                            z-index: 2;
+                            opacity: 0;
+                            transform: translateY(8px);
+                            transition: opacity 0.3s ease, transform 0.3s ease;
+ 
+                            span {
+                                color: $color-white;
+                                font-size: 0.9rem;
+                                font-weight: 600;
+                                letter-spacing: 0.05em;
+                            }
+                        }
+ 
+                        &:hover {
+                            img {
+                                transform: scale(1.06);
+                            }
+ 
+                            &::after {
+                                opacity: 1;
+                            }
+ 
+                            .gallery_overlay {
+                                opacity: 1;
+                                transform: translateY(0);
+                            }
+                        }
+                    }
+                }
+            }// /#gallery
+ 
+ 
+            // ── Contact ───────────────────────────
+            #contact {
+                @include tarjeta-estilo;
+ 
+                h2 {
+                    @include section-heading;
+                }
+ 
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+ 
+                    label {
+                        margin-top: 10px;
+                        font-size: 0.9rem;
+                        color: $color-letra-main;
+                    }
+ 
+                    input {
+                        margin-top: 6px;
+                        background-color: $color-fondo-transparente-principal;
+                        @include tarjeta-estilo;
+                        padding: 8px 10px;
+                        border: 1px solid transparent;
+                        outline: none;
+                        transition: border-color 0.2s ease;
+ 
+                        &:focus {
+                            border-color: $color-blue;
+                        }
+ 
+                        &:invalid:not(:placeholder-shown) {
+                            border-color: #ee7c7c;
+                        }
+                    }
+ 
+                    button {
+                        @include boton;
+                        align-self: flex-start;
+ 
+                        &:hover {
+                            background-color: $color-blue;
+                            color: $color-white;
+                        }
+                    }
+                }
+            }
+ 
+ 
+            // ── Pets teaser ───────────────────────
+            .mascotas {
+                @include tarjeta-estilo;
+                background-color: $color-fondo-transparente-h;
+ 
+                p {
+                    text-align: center;
+                    margin: 30px;
+                }
+ 
+                a {
+                    @include boton;
+ 
+                    &:hover {
+                        background-color: $color-blue;
+                        color: $color-white;
+                        font-size: inherit;
+                    }
+                }
+            }
+ 
+        }// /main
+ 
+ 
+        // ─── FOOTER ───────────────────────────────
+        footer {
+            border-radius: 10px;
+            box-shadow: $shadow-dark;
+            min-height: 100px;
+            @include flex-center(row);
+            background-color: $color-header-footer;
+            width: 100%;
+            margin-top: auto;
+ 
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: $color-blue;
+                opacity: 0.4;
+            }
+ 
+            .container_footer {
+                gap: 100px;
+                @include flex-center(row);
+                width: 100%;
+                padding: 0;
+                margin: 40px;
+
+                // ── Responsive: footer en columna en móvil ──
+                @media (max-width: $bp-md) {
+                    flex-direction: column-reverse;
+                    gap: 30px;
+                    margin: 24px 16px;
+                    text-align: center;
+                }
+ 
+                
+                .footer {
+                    ul {
+                        display: flex;
+                        gap: 40px;
+
+                        // ── Responsive: links del footer en columna en móvil ──
+                        @media (max-width: $bp-md) {
+                            flex-direction: column;
+                            gap: 16px;
+                            align-items: center;
+                        }
+ 
+                        .menu_nav a {
+                            position: relative;
+ 
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                bottom: -2px;
+                                left: 0;
+                                width: 0;
+                                height: 1px;
+                                background-color: $color-blue;
+                                transition: width 0.25s ease;
+                            }
+ 
+                            &:hover::after {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }// /footer
+ 
+    }// /.general_container
+}// /body

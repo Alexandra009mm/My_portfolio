@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio_personal</title>
+    <!-- Compiled from style.scss -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+    <div class="general_container">
+
+        <!-- ── HEADER / NAV ── -->
+        <header id="home">
+            <div class="container_header">
+                <h2>Portafolio | Alexandra Peña</h2>
+                <button id="button_menu" onclick="showmenu()">
+                    ≡
+                </button>
+                <nav class="main-menu">
+                    <ul class="menu">
+                        <li>
+                            <img src="img/child-dress-solid.png" alt="About icon" width="40px" height="40px">
+                            <a class="sections" href="#hero_title">About me</a>
+                        </li>
+                        <li>
+                            <img src="img/folder-solid.png" alt="Projects icon" width="30px" height="30px">
+                            <a class="sections" href="#proyect">Projects</a>
+                        </li>
+                        <!-- Gallery link added to nav -->
+                        <li>
+                            <img src="img/folder-solid.png" alt="Gallery icon" width="30px" height="30px">
+                            <a class="sections" href="#gallery">Gallery</a>
+                        </li>
+                        <li>
+                            <img src="img/phone-solid1.webp" alt="Contact icon" width="30px" height="30px">
+                            <a class="sections" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+
+            <!-- ── HERO ── -->
+            <section class="hero_container">
+                <h1 id="hero_title">learn a little about me.</h1>
+                <p id="hero_paragraph">
+                    I am a passionate person for software development and web designing.
+                    I love to learn constantly, I enjoy teamwork and face new challenges every time.
+                    I continuously sharpen my skills in HTML, CSS and developer logic.
+                </p>
+                <a class="bt" href="#proyect">let's go</a>
+            </section>
+
+            <!-- ── PROJECTS ── -->
+            <section id="proyect">
+                <h2>Projects:</h2>
+                <ul>
+                    <li class="proyects">
+                        <strong>
+                            <a href="mascotas/mascotas.html" target="_blank">See the project of pets</a>
+                        </strong>
+                        <p>A web platform connecting rescued pets with homes through a visual gallery,
+                            adoption management, volunteering, and donations.</p>
+                    </li>
+
+                    <li class="proyects">
+                        <strong>
+                            <a href="https://github.com/Alexandra009mm/seul_website.git" target="_blank">My Seoul Guide</a>
+                        </strong>
+                        <p>A personal site exploring Seoul through my own interests, highlighting its
+                            cutting-edge tech, iconic landmarks, and pop culture.</p>
+                    </li>
+
+                    <li class="proyects">
+                        <strong>
+                            <a href="https://github.com/brayanlozada1102-collab/C3_Customer_Order_Management_System.git" target="_blank">Order Calculator</a>
+                        </strong>
+                        <p>A web app for order management that automatically calculates totals,
+                            taxes, and discounts to generate quick receipts.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- ── GALLERY ── -->
+            <!--
+                Gallery section: shows screenshots / previews of my work and
+                the tools / skills I use day to day.
+                Images should be placed in img/gallery/
+            -->
+            <section id="gallery">
+                <h2>Gallery &amp; Skills</h2>
+
+                <!-- Filter buttons to switch between categories -->
+                <div class="gallery_filters">
+                    <button class="filter_btn active" data-filter="all">All</button>
+                    <button class="filter_btn" data-filter="projects">Projects</button>
+                    <button class="filter_btn" data-filter="skills">Skills</button>
+                </div>
+
+                <div class="gallery_grid">
+
+                    <!-- Project screenshots -->
+                    <div class="gallery_item" data-category="projects">
+                        <img src="img/capture_of_cats.png" alt="Pets project screenshot">
+                        <div class="gallery_overlay">
+                            <span>Pets Platform</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery_item" data-category="projects">
+                        <img src="img/image.png" alt="Seoul Guide screenshot">
+                        <div class="gallery_overlay">
+                            <span>My Seoul Guide</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery_item" data-category="projects">
+                        <img src="img/Captura de pantalla 2026-04-22 140513.png" alt="Order Calculator screenshot">
+                        <div class="gallery_overlay">
+                            <span>Order Calculator</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill / tool cards -->
+                    <div class="gallery_item" data-category="skills">
+                        <img src="" alt="HTML5">
+                        <div class="gallery_overlay">
+                            <span>HTML5</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery_item" data-category="skills">
+                        <img src="img/gallery/css-skill.jpg" alt="CSS3 / SCSS">
+                        <div class="gallery_overlay">
+                            <span>CSS3 / SCSS</span>
+                        </div>
+                    </div>
+
+                    <div class="gallery_item" data-category="skills">
+                        <img src="img/gallery/js-skill.jpg" alt="python">
+                        <div class="gallery_overlay">
+                            <span>Python</span>
+                        </div>
+                    </div>
+
+                </div><!-- /.gallery_grid -->
+            </section><!-- /#gallery -->
+
+            <!-- ── CONTACT ── -->
+            <section id="contact">
+                <h2>Contact</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text"  id="name"  name="name"  placeholder="Your name"
+                           style="color: rgb(255,255,255);" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="@email.com"
+                           style="color: rgb(255,255,255);" required>
+
+                    <label for="msj">Message:</label>
+                    <input type="text"  id="msj"   name="msj"   placeholder="Write your message"
+                           style="color: rgb(255,255,255);" required>
+
+                    <!-- Fixed typo: "semd" → "Send" -->
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+
+            <!-- ── PETS TEASER ── -->
+            <section class="mascotas">
+                <p id="mt">I really love animals 🐶🐱 — check out my project!</p>
+                <!-- Fixed typo: "View Projec" → "View Project" -->
+                <a href="mascotas/mascotas.html" target="_blank">View Project</a>
+            </section>
+
+        </main>
+
+        <!-- ── FOOTER ── -->
+        <footer>
+            <div class="container_footer">
+                <div class="footer-brand">
+                    <samp>&copy; 2026 Alexandra Peña, portafolio.</samp>
+                </div>
+                <nav class="footer">
+                    <ul>
+                        <li class="menu_nav"><a href="index.html">Home</a></li>
+                        <li class="menu_nav"><a href="#contact">Contact</a></li>
+                        <li class="menu_nav"><a href="https://github.com/Alexandra009mm" target="_blank">Github</a></li>
+                        <li class="menu_nav"><a href="https://www.privacypolicies.com/es/nuestra-politica-de-privacidad/" target="_blank">Terms</a></li>
+                        <li class="menu_nav"><a href="https://www.instagram.com/alexandra.x28/" target="_blank">Ig</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+
+    </div><!-- /.general_container -->
+
+    <!-- ── Gallery filter script ── -->
+
+     <script src="script.js"> </script>
+
+
+
+</body>
+</html>

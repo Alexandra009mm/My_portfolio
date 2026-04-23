@@ -1,0 +1,858 @@
+// =====================
+// VARIABLES
+// =====================
+$color-header-footer: #DDBB99;
+$color-white: #ffffff;
+$color-cards: #cd7f32;
+$color-body: #F5F5DC;
+$color-letra-bordes: #C19A6B;
+$color-destalles: #a8a870;
+$color-fondo-transparente-principal: rgba(0, 0, 0, 0.28);
+$color-fondo-transparente-h: rgba(197, 102, 71, 0.395);
+
+// =====================
+// MIXINS
+// =====================
+
+// Shared card style: padding, radius, shadow, border
+@mixin tarjeta-estilo {
+  padding: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 2px solid $color-white;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+// Button style: italic, light bg, olive border
+@mixin boton {
+  font-style: italic;
+  background-color: $color-white;
+  padding: 10px 20px;
+  border: 2px solid $color-destalles;
+  border-radius: 10px;
+  color: $color-letra-bordes;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  // Hover state using pseudo-class
+  &:hover {
+    background-color: $color-destalles;
+    color: $color-white;
+  }
+}
+
+// Box container: warm white, shadow, olive border
+@mixin box {
+  background: #fffaf5;
+  margin: 20px 0;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  border: 2px solid $color-destalles;
+}
+
+// Section heading inside box: colored background with italic text
+@mixin section-heading($bg-color: $color-letra-bordes) {
+  color: $color-white;
+  font-style: italic;
+  @include tarjeta-estilo;
+  background-color: $bg-color;
+}
+
+// =====================
+// RESET
+// =====================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// =====================
+// GLOBAL ELEMENTS
+// =====================
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $color-cards;
+
+  // Underline on hover for all links
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// =====================
+// BODY
+// =====================
+body {
+  min-height: 100vh;
+  background-color: $color-body;
+  color: $color-letra-bordes;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+
+  // =====================
+  // HEADER
+  // =====================
+  header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    min-height: 100px;
+    background-color: $color-header-footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(187, 174, 174, 0.932);
+    z-index: 1000;
+
+    h1 {
+      -webkit-text-stroke: 2px $color-letra-bordes;
+      color: $color-white;
+      font-style: italic;
+
+      // Decorative paw emoji before the title
+      &::before {
+        content: "🐾 ";
+      }
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      ul.nav-list {
+        display: flex;
+        gap: 60px;
+        margin-top: 10px;
+
+        // Nav icon hover: slight lift effect
+        li.link a img {
+          transition: transform 0.2s ease, opacity 0.2s ease;
+
+          &:hover {
+            transform: translateY(-3px);
+            opacity: 0.75;
+          }
+        }
+      }
+    }
+  }
+
+  // =====================
+  // MAIN
+  // =====================
+  main {
+
+    // --- Hero section (mascotas.html) ---
+    section.hero_container {
+      color: $color-white;
+      text-align: center;
+      background-image: url(img/gatos_hero.jpg);
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      div.hero {
+        @include tarjeta-estilo;
+        background-color: $color-fondo-transparente-principal;
+      }
+    }
+
+    // --- General container used in mascotas.html ---
+    div.general_container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 20px;
+
+      section.container_description {
+        @include box;
+
+        h2 {
+          @include section-heading($color-letra-bordes);
+        }
+      }
+
+      section.benefits {
+        @include box;
+
+        h3 {
+          @include section-heading($color-letra-bordes);
+        }
+
+        ul#benefits-list {
+          li.benefit {
+            @include tarjeta-estilo;
+          }
+        }
+      }
+
+      // Gallery inside mascotas.html
+      section.galeria {
+        @include box;
+
+        h2 {
+          @include section-heading($color-header-footer);
+        }
+
+        figure.pets_container {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 15px;
+          width: 100%;
+          margin-top: 20px;
+        }
+      }
+
+      a#return {
+        @include boton;
+        display: inline-block;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  // =====================
+  // FOOTER
+  // =====================
+  footer {
+    background-color: $color-header-footer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // Decorative top border line using pseudo-element
+    &::before {
+      content: "";
+      display: block;
+      width: 80%;
+      height: 2px;
+      background-color: rgba($color-letra-bordes, 0.4);
+      margin: 0 auto 10px;
+    }
+
+    div.footer_container {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: nowrap;
+      gap: 20px;
+      margin: 50px;
+      color: $color-white;
+
+      // Shared heading style for footer columns
+      h4 {
+        margin-bottom: 10px;
+        font-style: italic;
+
+        // Small decorative underline after h4
+        &::after {
+          content: "";
+          display: block;
+          width: 40px;
+          height: 2px;
+          background-color: $color-white;
+          margin-top: 4px;
+        }
+      }
+
+      div.social_networks {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $color-white;
+
+        ul.redes {
+          li.link-redes {
+            text-align: center;
+            margin-bottom: 6px;
+
+            a {
+              color: $color-white;
+              transition: color 0.2s ease;
+
+              // Highlight on hover
+              &:hover {
+                color: $color-letra-bordes;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+
+      div.legal {
+        a {
+          color: $color-white;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: $color-letra-bordes;
+            text-decoration: underline;
+          }
+        }
+      }
+
+      div.contacto {
+        ul.container_links_contact {
+          li {
+            margin-bottom: 10px;
+
+            p {
+              line-height: 1.6;
+            }
+          }
+        }
+      }
+    }
+
+    // Copyright line
+    p {
+      color: $color-white;
+      padding-bottom: 20px;
+      font-size: 0.9rem;
+
+      // Copyright symbol decoration
+      &::before {
+        content: "— ";
+      }
+
+      &::after {
+        content: " —";
+      }
+    }
+  }
+}
+
+// =====================
+// INFO.HTML STYLES
+// =====================
+main {
+  section.general_container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+
+    section.donations {
+      @include tarjeta-estilo;
+      border: 1px solid $color-destalles;
+
+      h2 {
+        color: $color-destalles;
+        font-style: italic;
+      }
+    }
+
+    aside.adoption_process {
+      h2 {
+        color: $color-destalles;
+        font-style: italic;
+      }
+
+      ul {
+        display: flex;
+        gap: 30px;
+
+        li {
+          @include tarjeta-estilo;
+          border: 1px solid $color-destalles;
+
+          // Numbered counter using pseudo-element
+          &::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            display: inline-block;
+            background-color: $color-destalles;
+            color: $color-white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 8px;
+          }
+        }
+      }
+
+      // Counter reset on the list
+      ul {
+        counter-reset: step-counter;
+      }
+
+      .video-container {
+        position: relative;
+        width: 70%;
+        max-width: 800px;
+        margin: auto;
+        background-color: $color-cards;
+        padding: 4px;
+        border-radius: 20px;
+
+        video {
+          width: 100%;
+          display: block;
+          border-radius: 10px;
+        }
+
+        .custom-play-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+          }
+        }
+
+        .custom-play-button img {
+          width: 50px;
+          height: 60px;
+        }
+      }
+    }
+
+    section.volunteering {
+      @include tarjeta-estilo;
+      border: 1px solid $color-destalles;
+
+      h2 {
+        color: $color-destalles;
+        font-style: italic;
+      }
+
+      ul.volunteers_list {
+        display: flex;
+        gap: 30px;
+
+        li {
+          @include tarjeta-estilo;
+          border: 1px solid $color-destalles;
+        }
+      }
+    }
+  }
+}
+
+// =====================
+// CONTACT.HTML STYLES
+// =====================
+main {
+  section.general_container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    // Main page heading
+    h2 {
+      @include tarjeta-estilo;
+      text-align: center;
+      background-color: $color-letra-bordes;
+      color: $color-white;
+      font-style: italic;
+    }
+
+    // Location section with map + info grid
+    section.ubicacion {
+      @include box;
+
+      h2 {
+        background-color: $color-header-footer;
+      }
+
+      .contenedor-ubicacion {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: center;
+        margin-top: 20px;
+
+        .mapa {
+          iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 15px;
+          }
+        }
+
+        .info-ubicacion {
+          @include tarjeta-estilo;
+          background-color: $color-white;
+          border: 1px solid $color-destalles;
+
+          h3 {
+            margin-top: 15px;
+            color: $color-letra-bordes;
+          }
+
+          p {
+            margin-top: 10px;
+            line-height: 1.6;
+          }
+
+          // "Do you want to adopt?" highlight
+          p strong {
+            color: $color-cards;
+          }
+        }
+      }
+    }
+
+    // =====================
+    // GALLERY — contact.html
+    // Responsive: 4 cols → 2 cols on tablet/mobile
+    // =====================
+    section.galeria {
+      @include box;
+      margin-top: 30px;
+
+      h2 {
+        @include section-heading($color-header-footer);
+      }
+
+      // Subtitle below gallery heading
+      p.galeria__subtitle {
+        font-style: italic;
+        color: $color-letra-bordes;
+        margin-bottom: 20px;
+        margin-top: -10px;
+        font-size: 0.95rem;
+      }
+
+      figure.pets_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // 4 columns on desktop
+        gap: 15px;
+        width: 100%;
+        margin-top: 20px;
+
+        // Each gallery item: relative for overlay positioning
+        .gallery-item {
+          position: relative;
+          overflow: hidden;
+          border-radius: 12px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+          img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.4s ease;
+          }
+
+          // Caption overlay hidden by default
+          figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba($color-letra-bordes, 0.85);
+            color: $color-white;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.85rem;
+            font-style: italic;
+            transform: translateY(100%); // hidden below the card
+            transition: transform 0.3s ease;
+
+            // Decorative paw before caption text
+            &::before {
+              content: "🐾 ";
+            }
+          }
+
+          // On hover: zoom image, reveal caption
+          &:hover img {
+            transform: scale(1.07);
+          }
+
+          &:hover figcaption {
+            transform: translateY(0);
+          }
+
+          // First item slightly larger: spans 2 columns
+          &:first-child {
+            grid-column: span 2;
+
+            img {
+              height: 250px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// =====================
+// TABLETS (max 992px)
+// =====================
+@media (max-width: 992px) {
+
+  body {
+
+    header {
+      nav {
+        ul.nav-list {
+          gap: 30px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    }
+
+    main {
+
+      div.general_container {
+        width: 95%;
+
+        // Gallery in mascotas.html → 2 cols on tablet
+        section.galeria {
+          figure.pets_container {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+          }
+        }
+      }
+
+      // Gallery in contact.html → 2 cols on tablet
+      section.general_container {
+        section.galeria {
+          figure.pets_container {
+            grid-template-columns: repeat(2, 1fr); // drops from 4 to 2
+
+            .gallery-item:first-child {
+              grid-column: span 2; // keeps the featured first item wider
+            }
+          }
+        }
+
+        aside.adoption_process {
+          ul {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+
+        section.volunteering {
+          ul.volunteers_list {
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+        }
+      }
+    }
+
+    footer {
+      div.footer_container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// =====================
+// MOBILE (max 768px)
+// =====================
+@media (max-width: 768px) {
+
+  body {
+
+    header {
+      min-height: auto;
+      padding: 15px;
+
+      h1 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      nav {
+        ul.nav-list {
+          flex-direction: row; // keep icons in a row on mobile
+          gap: 20px;
+        }
+      }
+    }
+
+    main {
+
+      section.hero_container {
+        min-height: 70vh;
+        padding: 20px;
+
+        div.hero {
+          padding: 20px;
+        }
+      }
+
+      div.general_container {
+        width: 100%;
+        padding: 10px;
+      }
+
+      // Gallery in mascotas.html → 2 cols on mobile
+      section.galeria {
+        figure.pets_container {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+
+          img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+        }
+      }
+
+      section.general_container {
+
+        // Gallery in contact.html → 2 cols on mobile
+        section.galeria {
+          figure.pets_container {
+            grid-template-columns: repeat(2, 1fr);
+
+            .gallery-item {
+              img {
+                height: 150px;
+              }
+
+              // Keep first item spanning on mobile too
+              &:first-child {
+                grid-column: span 2;
+
+                img {
+                  height: 180px;
+                }
+              }
+            }
+          }
+        }
+
+        aside.adoption_process {
+          ul {
+            flex-direction: column;
+            gap: 15px;
+          }
+
+          .video-container {
+            width: 100%;
+          }
+        }
+
+        section.volunteering {
+          ul.volunteers_list {
+            flex-direction: column;
+            gap: 15px;
+          }
+        }
+      }
+
+      // Location grid → single column on mobile
+      .contenedor-ubicacion {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    footer {
+      div.footer_container {
+        margin: 20px;
+        gap: 15px;
+      }
+    }
+  }
+}
+
+// =====================
+// SMALL MOBILE (max 480px)
+// =====================
+@media (max-width: 480px) {
+
+  body {
+
+    header {
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    main {
+
+      
+      section.hero_container {
+        div.hero {
+          padding: 15px;
+        }
+      }
+
+      // Shared padding reduction for content sections
+      section.container_description,
+      section.benefits,
+      section.galeria,
+      section.donations,
+      section.volunteering,
+      section.ubicacion {
+        padding: 15px;
+      }
+
+      // Gallery → single column on very small screens
+      section.general_container {
+        section.galeria {
+          figure.pets_container {
+            grid-template-columns: repeat(2, 1fr); // keep 2 cols even on small
+
+            .gallery-item {
+              img {
+                height: 120px;
+              }
+
+              &:first-child {
+                grid-column: span 2;
+              }
+            }
+          }
+        }
+      }
+
+      .custom-play-button img {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    footer {
+      p {
+        font-size: 0.9rem;
+        text-align: center;
+      }
+    }
+  }
+}

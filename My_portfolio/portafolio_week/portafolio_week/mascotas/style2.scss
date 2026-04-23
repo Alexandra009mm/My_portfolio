@@ -1,0 +1,203 @@
+$color-header-footer: #DDBB99;
+$color-white: #ffffff;
+$color-cards: #cd7f32;
+$color-body: #F5F5DC;
+$color-letra-bordes: #C19A6B;
+$color-destalles: #a8a870;
+$color-fondo-transparente-principal:rgba(0, 0, 0, 0.28);
+$color-fondo-transparente-h:rgba(197, 102, 71, 0.395);
+
+@mixin tarjeta-estilo {
+  padding: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(215, 196, 121, 0.932);
+  border: 2px solid $color-white;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+
+}
+
+
+@mixin boton {
+    font-style: italic;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px;
+    border: 2px solid $color-destalles;
+    border-radius: 10px;
+    color: $color-letra-bordes;
+}
+@mixin box{
+    background: #fffaf5;
+    margin: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    border: 2px solid $color-destalles;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  min-height: 100vh;
+  margin: 0;
+  background-color: $color-body;
+  color: $color-letra-bordes;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  header{
+    position: sticky;
+    background-color: $color-header-footer;
+    top: 0;
+    width: 100%; 
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(187, 174, 174, 0.932);
+    z-index: 1000;
+    h1{
+      -webkit-text-stroke: 2px $color-letra-bordes;
+      color: $color-white;
+      font-style: italic;
+    }
+    nav{
+      position: sticky;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      ul.nav-list{
+        display: flex;
+        gap: 60px;
+        margin-top: 10px;
+      }
+    }
+
+  }
+  main{
+      section.hero_container{
+        color: $color-white;
+        text-align: center;
+        margin-top: 50px;
+        background-image: url(img/gatos_hero.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+
+        div.hero{
+          @include tarjeta-estilo;
+          background-color: $color-fondo-transparente-principal;
+        }
+      }
+    div.general_container{
+        width: 90%;           /* Ocupa el 90% del ancho de la pantalla */
+        max-width: 1200px;    /* No crecerá más de esto en pantallas grandes */
+        margin: 0 auto;       /* El truco clave: centra la caja horizontalmente */
+        overflow: hidden;     /* Evita que el contenido interno se desborde */
+        padding: 20px;     
+
+      section.container_description{
+        @include box();
+        h2{
+           color: $color-white;
+          font-style: italic;
+          @include tarjeta-estilo;
+          background-color: $color-letra-bordes;
+        }
+      }
+      section.benefits{
+        @include box();
+        h3{
+          color: $color-white;
+          font-style: italic;
+          @include tarjeta-estilo;
+          background-color: $color-letra-bordes;
+        }
+        ul #benefits-list{
+
+          li.benefit{
+             @include tarjeta-estilo;
+          }
+        }
+
+      }
+      section.galeria{
+        @include box();
+        h2{
+          color: $color-white;
+          font-style: italic;
+          @include tarjeta-estilo;
+          background-color: $color-header-footer;
+
+        }
+        figure.pets_container{
+          display: grid;
+          grid-template-columns: 100px 100px;
+          grid-template-rows: 100px 100px;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      a#return{
+        @include boton();
+
+      }
+
+    }
+  }
+  footer{
+    background-color: $color-header-footer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div.footer_container{
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: nowrap;
+      gap: 20px;
+      margin: 50px;
+      color: white;
+      div.social_networks{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+        ul.redes{
+          li.link-redes{
+            text-align: justify;
+            a {
+              color: white;
+            }
+
+          }
+        }
+      }
+     div.legal{
+      a{
+        color: #ffffff;
+      }
+     }
+      
+    }
+    p {
+    color: white;
+    }
+  }
+}
+
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: $color-cards;
+}
